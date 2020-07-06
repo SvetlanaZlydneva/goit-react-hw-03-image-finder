@@ -22,6 +22,7 @@ class App extends Component {
     if (prevState.searchQuery !== searchQuery) {
       this.fetchImages();
     }
+    this.scrollImages();
   }
 
   onChangeQuery = query => {
@@ -53,7 +54,6 @@ class App extends Component {
           images: [...prevState.images, ...images],
           currentPage: prevState.currentPage + 1,
         }));
-        this.scrollImages();
       })
       .catch(error => this.setState({ error }))
       .finally(() => this.setState({ isLoading: false }));
