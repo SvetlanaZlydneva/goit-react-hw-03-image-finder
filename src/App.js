@@ -18,11 +18,11 @@ class App extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    const { searchQuery } = this.state;
+    const { searchQuery, isLoading } = this.state;
     if (prevState.searchQuery !== searchQuery) {
       this.fetchImages();
     }
-    this.scrollImages();
+    if (isLoading) this.scrollImages();
   }
 
   onChangeQuery = query => {
